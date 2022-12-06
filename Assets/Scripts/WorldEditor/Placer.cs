@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Placer : MonoBehaviour
 {
+    // TIle that is held by player
     public GameObject currentGameObject;
+
     List<GameObject> map = new List<GameObject>();
     public Transform selectedTransform;
     private List<GameObject> _allowedMoves  = new List<GameObject>();
     private GameObject[] _allowedToDestroy = new GameObject[]{};
+    
     // For future
     private int indexOfPositions = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,20 +26,19 @@ public class Placer : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return)) {
-            Place();
+            place();
         }
+
     }
 
-
-
-    void Place() {
+    void place() {
         _allowedToDestroy = GameObject.FindGameObjectsWithTag("allowedMoves");
         foreach (GameObject allowedMove in _allowedToDestroy) {
             Destroy(allowedMove);
         }
 
-        GameObject addedTile = Instantiate(currentGameObject, selectedTransform.position, selectedTransform.rotation);
-
+        GameObject addedTile = Instantiate(currentGameObject, selectedTransform.position);
+        
         map.Add(addedTile);
         // Need to empty allowedMoves array
         _allowedMoves = new List<GameObject>();
@@ -45,7 +48,5 @@ public class Placer : MonoBehaviour
         }
         indexOfPositions = 0;
         selectedTransform = _allowedMoves[indexOfPositions].transform;
-
-
     }
 }

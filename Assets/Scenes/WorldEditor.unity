@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &131706396 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7367165863129868329, guid: b3b744f4583cd70e6bd451ddc21c7183, type: 3}
+  m_PrefabInstance: {fileID: 4971679051116460186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &312820709
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,11 +212,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1101135083 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9000271239234876548, guid: b3b744f4583cd70e6bd451ddc21c7183, type: 3}
-  m_PrefabInstance: {fileID: 4971679051116460186}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1623161361
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1623161363}
   - component: {fileID: 1623161362}
+  - component: {fileID: 1623161364}
   m_Layer: 0
   m_Name: Placer
   m_TagString: Untagged
@@ -242,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGameObject: {fileID: 2580176419622289999, guid: 1802eda8f400d53a59fe9d15332d6fb9, type: 3}
-  selectedTransform: {fileID: 1101135083}
+  selectedTransform: {fileID: 131706396}
 --- !u!4 &1623161363
 Transform:
   m_ObjectHideFlags: 0
@@ -258,6 +259,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623161364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623161361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e5c53171876e5a1ba82efe9ff73bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hotbar:
+  - {fileID: 2580176419622289999, guid: 1802eda8f400d53a59fe9d15332d6fb9, type: 3}
+  - {fileID: 225170996897163149, guid: cb0837068685ba4b3a2f69b5283257f3, type: 3}
+  placer: {fileID: 1623161362}
 --- !u!1 &1810835293
 GameObject:
   m_ObjectHideFlags: 0
