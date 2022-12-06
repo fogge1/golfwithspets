@@ -11,7 +11,7 @@ public class Placer : MonoBehaviour
     public Transform selectedTransform;
     private List<GameObject> _allowedMoves  = new List<GameObject>();
     private GameObject[] _allowedToDestroy = new GameObject[]{};
-    
+
     // For future
     private int indexOfPositions = 0;
 
@@ -37,7 +37,7 @@ public class Placer : MonoBehaviour
             Destroy(allowedMove);
         }
 
-        GameObject addedTile = Instantiate(currentGameObject, selectedTransform.position);
+        GameObject addedTile = Instantiate(currentGameObject, selectedTransform.position, selectedTransform.rotation);
         
         map.Add(addedTile);
         // Need to empty allowedMoves array
