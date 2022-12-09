@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - allowedMoves
+  - ramp
+  - straight
+  - curve
   layers:
   - Default
   - TransparentFX

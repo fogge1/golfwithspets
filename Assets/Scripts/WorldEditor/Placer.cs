@@ -11,6 +11,10 @@ public class Placer : MonoBehaviour
     public Transform selectedTransform;
     private List<GameObject> _allowedMoves  = new List<GameObject>();
     private GameObject[] _allowedToDestroy = new GameObject[]{};
+    public Material straight;
+    public Material straightTrans;
+    public Material ramp;
+    public Material rampTrans;
 
     // For future
     private int indexOfPositions = 0;
@@ -38,7 +42,30 @@ public class Placer : MonoBehaviour
         }
 
         GameObject addedTile = Instantiate(currentGameObject, selectedTransform.position, selectedTransform.rotation);
+        GameObject addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+new Vector3(0, 0, 4), Quaternion.Euler(0, 0, 0));
+        addedAllowed.transform.parent = addedTile.transform;
+        addedAllowed.transform.localScale = new Vector3(1, 1, 1);
+        addedAllowed.transform.rotation = addedTile.transform.rotation;
         
+        switch(addedTile.tag) {
+            case "straight":
+                addedTile.GetComponent<MeshRenderer> ().material = straight;
+                // addedAllowed.transform.position += new Vector()
+                addedAllowed.GetComponent<MeshRenderer>().material = straightTrans;
+                // addedAllowed.transform.position = addedTile.transform.position + new Vector3(0, 0, 5);
+                // addedAllowed.transform.position += new Vector3(0f, 0f, 1f);
+            break;
+            case "ramp":
+                addedTile.GetComponent<MeshRenderer> ().material = ramp;
+                addedAllowed.transform.position += new Vector3(0, 1.15f, 0);
+                addedAllowed.GetComponent<MeshRenderer>().material = rampTrans;
+            break;
+        }
+        addedAllowed.tag = "allowedMoves";
+    
+
+
+
         map.Add(addedTile);
         // Need to empty allowedMoves array
         _allowedMoves = new List<GameObject>();

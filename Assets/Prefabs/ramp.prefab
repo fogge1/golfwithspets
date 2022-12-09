@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 262971585593215768}
   m_Layer: 0
   m_Name: ramp
-  m_TagString: Untagged
+  m_TagString: ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201569225979725656}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.09188174, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 198.5388, y: 197.72755, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 1b77754a6413cb342b24ec9c2403527d, type: 3}
+  - {fileID: 2100000, guid: 261e9647731d4f45e9379aebebc9b4a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
