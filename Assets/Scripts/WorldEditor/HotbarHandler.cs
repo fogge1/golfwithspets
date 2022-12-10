@@ -24,10 +24,10 @@ public class HotbarHandler : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             changeHeldTile(1);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) {
             changeHeldTile(-1);
         }
     }
@@ -46,5 +46,7 @@ public class HotbarHandler : MonoBehaviour
         Debug.Log(_heldItem.name);
         
         placer.currentGameObject = _heldItem;
+        placer.addGhostTile();
+
     }
 }
