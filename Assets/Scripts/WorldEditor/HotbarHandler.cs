@@ -44,7 +44,7 @@ public class HotbarHandler : MonoBehaviour
 
         _heldItem = Hotbar[heldItemIndex];
         Debug.Log(_heldItem.name);
-
+        
         placer.currentGameObject = _heldItem;
     }
 }

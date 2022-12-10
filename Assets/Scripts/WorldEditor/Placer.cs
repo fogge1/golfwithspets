@@ -15,6 +15,9 @@ public class Placer : MonoBehaviour
     public Material straightTrans;
     public Material ramp;
     public Material rampTrans;
+    public Material curve;
+    public Material curveTrans;
+    GameObject addedAllowed;
 
     // For future
     private int indexOfPositions = 0;
@@ -35,6 +38,10 @@ public class Placer : MonoBehaviour
 
     }
 
+    void switchTile() {
+
+    }
+
     void place() {
         _allowedToDestroy = GameObject.FindGameObjectsWithTag("allowedMoves");
         foreach (GameObject allowedMove in _allowedToDestroy) {
@@ -42,7 +49,9 @@ public class Placer : MonoBehaviour
         }
 
         GameObject addedTile = Instantiate(currentGameObject, selectedTransform.position, selectedTransform.rotation);
-        GameObject addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+new Vector3(0, 0, 4), Quaternion.Euler(0, 0, 0));
+        
+        addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+addedTile.transform.up*-4, Quaternion.Euler(0, 0, 0));
+
         addedAllowed.transform.parent = addedTile.transform;
         addedAllowed.transform.localScale = new Vector3(1, 1, 1);
         addedAllowed.transform.rotation = addedTile.transform.rotation;
@@ -59,6 +68,11 @@ public class Placer : MonoBehaviour
                 addedTile.GetComponent<MeshRenderer> ().material = ramp;
                 addedAllowed.transform.position += new Vector3(0, 1.15f, 0);
                 addedAllowed.GetComponent<MeshRenderer>().material = rampTrans;
+            break;
+            case "curve":
+                addedTile.GetComponent<MeshRenderer>().material = curve;
+                addedTile.transform.rotation *= Quaternion.Euler(0, 0, 90);
+                addedAllowed.GetComponent<MeshRenderer>().material = curveTrans;
             break;
         }
         addedAllowed.tag = "allowedMoves";
