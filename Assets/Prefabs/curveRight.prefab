@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8120339166508194231}
   - component: {fileID: 6293158410036276605}
   m_Layer: 0
-  m_Name: curve(new)
-  m_TagString: curve
+  m_Name: curveRight
+  m_TagString: curveRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

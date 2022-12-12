@@ -19,6 +19,8 @@ public class Placer : MonoBehaviour
     public Material curveTrans;
     public GameObject addedAllowed;
     public GameObject addedTile;
+    // Direction from curve
+    private int turnDir = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -34,17 +36,19 @@ public class Placer : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R) && addedAllowed.tag == "curve") {
-                      
+            turnDir *= -1;
+            addGhostTile();
         }
-        //Debug.Log(selectedTransform);
-
     }
 
     
 
     public void addGhostTile() {
         Destroy(addedAllowed);
-        addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+addedTile.transform.up*-4, Quaternion.Euler(0, 0, 0));
+        int allowedTileOffset = -4;
+
+
+        addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+addedTile.transform.up*allowedTileOffset, Quaternion.Euler(0, 0, 0));
         
         addedAllowed.transform.parent = addedTile.transform;
         addedAllowed.transform.localScale = new Vector3(1, 1, 1);
@@ -56,26 +60,28 @@ public class Placer : MonoBehaviour
 
         switch(addedAllowed.tag) {
             case "straight":
-                //addedTile.GetComponent<MeshRenderer> ().material = straight;
-                // addedAllowed.transform.position += new Vector()
+                
                 addedAllowed.GetComponent<MeshRenderer>().material = straightTrans;
-                // addedAllowed.transform.position = addedTile.transform.position + new Vector3(0, 0, 5);
-                // addedAllowed.transform.position += new Vector3(0f, 0f, 1f);
+                
             break;
             case "ramp":
                 //addedTile.GetComponent<MeshRenderer> ().material = ramp;
                 addedAllowed.GetComponent<MeshRenderer>().material = rampTrans;
             break;
-            case "curve":
-                //addedTile.GetComponent<MeshRenderer>().material = curve;
-                //addedTile.transform.rotation *= Quaternion.Euler(0, 0, 90);
+            case "curveRight":
+                
+
                 addedAllowed.transform.rotation *= Quaternion.Euler(0, 0, 90);
+                addedAllowed.GetComponent<MeshRenderer>().material = curveTrans;
+            break;
+            case "curveLeft":
+                
+
+                addedAllowed.transform.rotation *= Quaternion.Euler(0, 0, -90);
                 addedAllowed.GetComponent<MeshRenderer>().material = curveTrans;
             break;
             
         }
-        // addedAllowed.tag = "allowedMoves";
-
 
         Transform allowedMove_ = addedTile.transform.GetChild(0);
         selectedTransform = allowedMove_;
@@ -84,14 +90,12 @@ public class Placer : MonoBehaviour
 
     void place() {
         
-        //Debug.Log(selectedTransform);
         Transform allowedMove_ = addedTile.transform.GetChild(0);
         selectedTransform = allowedMove_;
         addedTile = Instantiate(currentGameObject, selectedTransform.position, selectedTransform.rotation);
+        
         addGhostTile();
         
-        //addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+addedTile.transform.up*-4, Quaternion.Euler(0, 0, 0));
-
         
         switch(addedTile.tag) {
             case "straight":
@@ -100,7 +104,8 @@ public class Placer : MonoBehaviour
             case "ramp":
                 addedTile.GetComponent<MeshRenderer> ().material = ramp;
             break;
-            case "curve":
+            case "curveRight":
+            case "curveLeft":
                 addedTile.GetComponent<MeshRenderer>().material = curve;
             break;
         }
