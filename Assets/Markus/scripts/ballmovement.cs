@@ -14,10 +14,23 @@ public class ballmovement : MonoBehaviour
     float yRot = 0f;
     float xRot = 0f;
 
-    // Update is called once per frame
+    int Shots = 0;
+   
+
     void Update()
     {
-        transform.position = ball.position;
+       
+            CheckForShot();
+            
+    }
+
+
+
+   
+    void CheckForShot()
+    {
+       
+        transform.position = ball.position;//on mouse press
         if (Input.GetMouseButton(0))
         {
             xRot += Input.GetAxis("Mouse X") * rotationspeed;
@@ -31,11 +44,19 @@ public class ballmovement : MonoBehaviour
             line.SetPosition(0, transform.position);
             line.SetPosition(1, transform.position + transform.forward * 4f);
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)) //on mouse release
         {
             ball.velocity = transform.forward * shootpower;
-            line.gameObject.SetActive(false);    
+            line.gameObject.SetActive(false);
+            Shots++;
+            Debug.Log(Shots);
         }
+
+        
+
     }
-   
-}
+
+
+
+
+} 
