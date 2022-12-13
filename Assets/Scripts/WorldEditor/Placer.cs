@@ -75,6 +75,7 @@ public class Placer : MonoBehaviour
             
         }
         
+        Camera.main.GetComponent<CameraController>().target = addedAllowed;
 
         _allowedMoves = new List<GameObject>();
         for (int i = 0; i < addedTile.transform.childCount; i++) {
