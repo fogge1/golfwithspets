@@ -19,8 +19,6 @@ public class Placer : MonoBehaviour
     public Material curveTrans;
     public GameObject addedAllowed;
     public GameObject addedTile;
-    // Direction from curve
-    private int turnDir = 1;
     int allowedTileOffset = -2;
 
     // Start is called before the first frame update
@@ -67,14 +65,10 @@ public class Placer : MonoBehaviour
                 changeMat(addedAllowed, rampTrans);                
             break;
             case "curveRight":
-                
-
                 addedAllowed.transform.rotation *= Quaternion.Euler(0, 90, 0);
                 changeMat(addedAllowed, curveTrans);                
             break;
             case "curveLeft":
-                
-
                 addedAllowed.transform.rotation *= Quaternion.Euler(0, -90, 0);
                 changeMat(addedAllowed, curveTrans);          
             break;
@@ -108,7 +102,6 @@ public class Placer : MonoBehaviour
         switch(addedTile.tag) {
             case "straight":
                 changeMat(addedTile, straight);                
-                
             break;
             case "ramp":
                 changeMat(addedTile, ramp);
@@ -117,7 +110,6 @@ public class Placer : MonoBehaviour
                 changeMat(addedTile, curve);
             break;
             case "curveLeft":
-                
                 changeMat(addedTile, curve);
             break;
             
