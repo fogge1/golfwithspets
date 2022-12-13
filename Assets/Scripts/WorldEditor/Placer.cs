@@ -21,6 +21,7 @@ public class Placer : MonoBehaviour
     public GameObject addedTile;
     // Direction from curve
     private int turnDir = 1;
+    int allowedTileOffset = -2;
 
     // Start is called before the first frame update
     void Start()
@@ -34,81 +35,94 @@ public class Placer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)) {
             place();
         }
-
-        if (Input.GetKeyDown(KeyCode.R) && addedAllowed.tag == "curve") {
-            turnDir *= -1;
-            addGhostTile();
-        }
     }
 
-    
+    void changeMat(GameObject go, Material mat) {
+        for (int i = 0; i < go.transform.childCount; i++) {
+            GameObject part = go.transform.GetChild(i).gameObject;
+            if (part.tag == "part") {
+                part.GetComponent<MeshRenderer>().material = mat;
+            }
+        }
+    }    
 
     public void addGhostTile() {
         Destroy(addedAllowed);
-        int allowedTileOffset = -4;
 
-
-        addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+addedTile.transform.up*allowedTileOffset, Quaternion.Euler(0, 0, 0));
+        
+        addedAllowed = Instantiate(currentGameObject, addedTile.transform.position+addedTile.transform.forward*allowedTileOffset, Quaternion.Euler(0, 0, 0));
         
         addedAllowed.transform.parent = addedTile.transform;
-        addedAllowed.transform.localScale = new Vector3(1, 1, 1);
         addedAllowed.transform.rotation = addedTile.transform.rotation;
 
         if (addedTile.tag == "ramp") {
-            addedAllowed.transform.position += new Vector3(0, 1.15f, 0);
+            addedAllowed.transform.position += new Vector3(0, 1f, 0);
         }
 
         switch(addedAllowed.tag) {
             case "straight":
-                
-                addedAllowed.GetComponent<MeshRenderer>().material = straightTrans;
-                
+                changeMat(addedAllowed, straightTrans);                
             break;
             case "ramp":
-                //addedTile.GetComponent<MeshRenderer> ().material = ramp;
-                addedAllowed.GetComponent<MeshRenderer>().material = rampTrans;
+                changeMat(addedAllowed, rampTrans);                
             break;
             case "curveRight":
                 
 
-                addedAllowed.transform.rotation *= Quaternion.Euler(0, 0, 90);
-                addedAllowed.GetComponent<MeshRenderer>().material = curveTrans;
+                addedAllowed.transform.rotation *= Quaternion.Euler(0, 90, 0);
+                changeMat(addedAllowed, curveTrans);                
             break;
             case "curveLeft":
                 
 
-                addedAllowed.transform.rotation *= Quaternion.Euler(0, 0, -90);
-                addedAllowed.GetComponent<MeshRenderer>().material = curveTrans;
+                addedAllowed.transform.rotation *= Quaternion.Euler(0, -90, 0);
+                changeMat(addedAllowed, curveTrans);          
             break;
             
         }
+        
 
-        Transform allowedMove_ = addedTile.transform.GetChild(0);
-        selectedTransform = allowedMove_;
+        _allowedMoves = new List<GameObject>();
+        for (int i = 0; i < addedTile.transform.childCount; i++) {
+            GameObject allowedMove = addedTile.transform.GetChild(i).gameObject;
+            if (allowedMove.name != "part") {
+                selectedTransform = allowedMove.transform;
+            }
+        }
         
     }
 
     void place() {
         
-        Transform allowedMove_ = addedTile.transform.GetChild(0);
-        selectedTransform = allowedMove_;
+        _allowedMoves = new List<GameObject>();
+        for (int i = 0; i < addedTile.transform.childCount; i++) {
+            GameObject allowedMove = addedTile.transform.GetChild(i).gameObject;
+            if (allowedMove.tag != "part") {
+                selectedTransform = allowedMove.transform;
+            }
+        }
         addedTile = Instantiate(currentGameObject, selectedTransform.position, selectedTransform.rotation);
         
         addGhostTile();
-        
-        
+
         switch(addedTile.tag) {
             case "straight":
-                addedTile.GetComponent<MeshRenderer> ().material = straight;
+                changeMat(addedTile, straight);                
+                
             break;
             case "ramp":
-                addedTile.GetComponent<MeshRenderer> ().material = ramp;
+                changeMat(addedTile, ramp);
             break;
             case "curveRight":
-            case "curveLeft":
-                addedTile.GetComponent<MeshRenderer>().material = curve;
+                changeMat(addedTile, curve);
             break;
+            case "curveLeft":
+                
+                changeMat(addedTile, curve);
+            break;
+            
         }
+        
     
         map.Add(addedTile);
     }

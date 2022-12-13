@@ -8,6 +8,9 @@ TagManager:
   - ramp
   - straight
   - curve
+  - curveRight
+  - curveLeft
+  - part
   layers:
   - Default
   - TransparentFX
