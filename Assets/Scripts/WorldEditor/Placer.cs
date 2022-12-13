@@ -11,12 +11,8 @@ public class Placer : MonoBehaviour
     public Transform selectedTransform;
     private List<GameObject> _allowedMoves  = new List<GameObject>();
     private GameObject[] _allowedToDestroy = new GameObject[]{};
-    public Material straight;
-    public Material straightTrans;
-    public Material ramp;
-    public Material rampTrans;
-    public Material curve;
-    public Material curveTrans;
+    [SerializeField] Material _mat;
+    [SerializeField] Material _matT;
     public GameObject addedAllowed;
     public GameObject addedTile;
     int allowedTileOffset = -2;
@@ -59,18 +55,18 @@ public class Placer : MonoBehaviour
 
         switch(addedAllowed.tag) {
             case "straight":
-                changeMat(addedAllowed, straightTrans);                
+                changeMat(addedAllowed, _matT);                
             break;
             case "ramp":
-                changeMat(addedAllowed, rampTrans);                
+                changeMat(addedAllowed, _matT);                
             break;
             case "curveRight":
                 addedAllowed.transform.rotation *= Quaternion.Euler(0, 90, 0);
-                changeMat(addedAllowed, curveTrans);                
+                changeMat(addedAllowed, _matT);                
             break;
             case "curveLeft":
                 addedAllowed.transform.rotation *= Quaternion.Euler(0, -90, 0);
-                changeMat(addedAllowed, curveTrans);          
+                changeMat(addedAllowed, _matT);          
             break;
             
         }
@@ -102,16 +98,16 @@ public class Placer : MonoBehaviour
 
         switch(addedTile.tag) {
             case "straight":
-                changeMat(addedTile, straight);                
+                changeMat(addedTile, _mat);                
             break;
             case "ramp":
-                changeMat(addedTile, ramp);
+                changeMat(addedTile, _mat);
             break;
             case "curveRight":
-                changeMat(addedTile, curve);
+                changeMat(addedTile, _mat);
             break;
             case "curveLeft":
-                changeMat(addedTile, curve);
+                changeMat(addedTile, _mat);
             break;
             
         }

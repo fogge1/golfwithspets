@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 36bdb491dc3c614a0853bffe84095e9f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -310,11 +310,11 @@ PrefabInstance:
     - target: {fileID: 235009955596169762, guid: 2317d13adf9920403a6c07d65509358a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2244758c4fbc6b90accffb0ecae0ebf, type: 2}
+      objectReference: {fileID: 2100000, guid: df5051f0b2979d92ea0558ecb0ea03fc, type: 2}
     - target: {fileID: 2319075082605516238, guid: 2317d13adf9920403a6c07d65509358a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2244758c4fbc6b90accffb0ecae0ebf, type: 2}
+      objectReference: {fileID: 2100000, guid: df5051f0b2979d92ea0558ecb0ea03fc, type: 2}
     - target: {fileID: 4907598495503768676, guid: 2317d13adf9920403a6c07d65509358a, type: 3}
       propertyPath: m_Name
       value: straight 1
@@ -366,7 +366,7 @@ PrefabInstance:
     - target: {fileID: 7246628445027921204, guid: 2317d13adf9920403a6c07d65509358a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2244758c4fbc6b90accffb0ecae0ebf, type: 2}
+      objectReference: {fileID: 2100000, guid: df5051f0b2979d92ea0558ecb0ea03fc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2317d13adf9920403a6c07d65509358a, type: 3}
 --- !u!1001 &513836315
@@ -379,19 +379,19 @@ PrefabInstance:
     - target: {fileID: 1752095291186810295, guid: ad028cffb898dec6f9a46865fd42da5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4a7ff5d8b165f0b24a3a0036eb397b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 261e9647731d4f45e9379aebebc9b4a2, type: 2}
     - target: {fileID: 4268673220330596955, guid: ad028cffb898dec6f9a46865fd42da5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4a7ff5d8b165f0b24a3a0036eb397b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 261e9647731d4f45e9379aebebc9b4a2, type: 2}
     - target: {fileID: 5242400197683034179, guid: ad028cffb898dec6f9a46865fd42da5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4a7ff5d8b165f0b24a3a0036eb397b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 261e9647731d4f45e9379aebebc9b4a2, type: 2}
     - target: {fileID: 6696432423696807245, guid: ad028cffb898dec6f9a46865fd42da5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4a7ff5d8b165f0b24a3a0036eb397b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 261e9647731d4f45e9379aebebc9b4a2, type: 2}
     - target: {fileID: 8588128757229051559, guid: ad028cffb898dec6f9a46865fd42da5b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -590,7 +590,7 @@ RectTransform:
   m_GameObject: {fileID: 1140031629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1560450938}
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c724f7118a45f6eea98e4e5fd16d695d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2779c00bf64c590678391f26c875b113, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c724f7118a45f6eea98e4e5fd16d695d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -940,12 +940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameObject: {fileID: 4907598495503768676, guid: 2317d13adf9920403a6c07d65509358a, type: 3}
   selectedTransform: {fileID: 556309001}
-  straight: {fileID: 2100000, guid: 4a7ff5d8b165f0b24a3a0036eb397b1d, type: 2}
-  straightTrans: {fileID: 2100000, guid: c2244758c4fbc6b90accffb0ecae0ebf, type: 2}
-  ramp: {fileID: 2100000, guid: 261e9647731d4f45e9379aebebc9b4a2, type: 2}
-  rampTrans: {fileID: 2100000, guid: df5051f0b2979d92ea0558ecb0ea03fc, type: 2}
-  curve: {fileID: 2100000, guid: f89d6c5003e94dcb6945b9f43bebc811, type: 2}
-  curveTrans: {fileID: 2100000, guid: e00fab679d61fa071b974fd3be506b59, type: 2}
+  _mat: {fileID: 2100000, guid: 261e9647731d4f45e9379aebebc9b4a2, type: 2}
+  _matT: {fileID: 2100000, guid: df5051f0b2979d92ea0558ecb0ea03fc, type: 2}
   addedAllowed: {fileID: 556309000}
   addedTile: {fileID: 926201793}
 --- !u!4 &1623161363
