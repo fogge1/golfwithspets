@@ -9,11 +9,12 @@ public class mapselect : MonoBehaviour
 {
     List<string> mapnames = new List<string>();
     List<string> mapstrings = new List<string>();
+    [SerializeField] SaveSystem saveSystem;
 
     void PopulateNames()//placeholder
     {
         mapnames.Clear();
-        for ( int i = 0; i < 5; i++)
+        for ( int i = 0; i < saveSystem.GetMaps(); i++)
         {
             mapnames.Add(i.ToString());
         }

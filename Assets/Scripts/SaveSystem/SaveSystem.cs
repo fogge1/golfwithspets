@@ -13,22 +13,16 @@ public class SaveSystem : MonoBehaviour
     [SerializeField] Tile rampPrefab;
 
     public static List<Tile> tiles = new List<Tile>();
-    string SUB_PATH = "/tile";
-    string SUB_COUNT_PATH = "/tile.count";
+    const string MAP_INDEX_PATH = "/map.count";
+    string SUB_PATH = "/tiles";
 
-    void Awake()
-    {
-        LoadTile();
-    }
-    
-    void OnApplicationQuit() {
-        SaveTile();
-    }
+    public void SaveTile() {
 
-    void SaveTile() {
+
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + SUB_PATH;
-        string countPath = Application.persistentDataPath + SUB_COUNT_PATH;
+        string countPath = Application.persistentDataPath + SUB_PATH + ".count";
+
 
         FileStream countStream = new FileStream(countPath, FileMode.Create);
 
@@ -45,10 +39,12 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    void LoadTile() {
+    public void LoadTile() {
+        int mapIndex = 0;
+
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + SUB_PATH;
-        string countPath = Application.persistentDataPath + SUB_COUNT_PATH;
+        string path = Application.persistentDataPath + SUB_PATH + mapIndex;
+        string countPath = Application.persistentDataPath + SUB_PATH + mapIndex + ".count";
         int tileCount = 0;
 
         if (File.Exists(countPath)) {
@@ -91,6 +87,24 @@ public class SaveSystem : MonoBehaviour
             }
             
         }
+    }
+
+    public int GetMaps() {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string mapPath = Application.persistentDataPath + MAP_INDEX_PATH;
+
+        int mapIndex = 1;
+
+        while (true) {
+            if (File.Exists(mapPath + mapIndex)) {
+                mapIndex++;
+            }
+            else {
+                Debug.Log("test");
+                return mapIndex;
+            }
+        }
+        
     }
 
     void SpawnTile(Tile tilePrefab, Vector3 position, Quaternion rotation) {

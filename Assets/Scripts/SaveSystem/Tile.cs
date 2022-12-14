@@ -9,7 +9,6 @@ public class Tile : MonoBehaviour
     }
 
     void OnDestroy() {
-        Debug.Log("test");
         SaveSystem.tiles.Remove(this);
     }
 
