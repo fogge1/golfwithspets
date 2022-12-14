@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+<<<<<<<< HEAD:Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
+guid: ea38eeb22df46fb7dacb16afa2299509
+========
+guid: 89de9d3a58c0dd192a324a819a7e8ddb
+>>>>>>>> main:Assets/TextMesh Pro/Documentation/WorldEditor.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
