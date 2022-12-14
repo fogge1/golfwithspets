@@ -2,38 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class mapselect : MonoBehaviour
 {
-    public Text TextBox;
-    void start()
+    List<string> mapnames = new List<string>();
+    List<string> mapstrings = new List<string>();
+
+    void PopulateNames()//placeholder
     {
-        var dropdown = transform.GetComponent<Dropdown>();
-
-        dropdown.options.Clear();
-
-        List<string> items = new List<string>();
-        items.Add("map1");
-        items.Add("map2");
-        foreach(var item in items)
+        mapnames.Clear();
+        for ( int i = 0; i < 5; i++)
         {
-            dropdown.options.Add(new Dropdown.OptionData(){ text = item });
+            mapnames.Add(i.ToString());
         }
-        dropdown.onValueChanged.AddListener(delegate { dropdownItemSelected(dropdown); });
-
-        DropdownItemSelected(dropdown);
     }
-    void DropdownItemSelected(Dropdown dropdown)
+    void Start()
     {
-        int index = dropdown.value;
-        TextBox.Text = dropdown.options[index].text;
-    }
-    
-    
-
-    void Update()
-    {
-        
+        PopulateNames();
+        GameObject buttonTemple = transform.GetChild(0).gameObject;
+        GameObject g;
+        for (int i = 0; i < mapnames.Count; i++)
+        {
+            g = Instantiate(buttonTemple, transform);
+            //g.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = mapnames[i];
+        }
+        Destroy(buttonTemple);
     }
 }

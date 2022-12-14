@@ -8,6 +8,7 @@ public class menucontroller : MonoBehaviour
     public static bool paused = false;
     public GameObject PauseMenuUI;
     public int mainmenu;
+    public int mapselect;
     public int singleplayer;
     public int mapbuilder;
 
@@ -17,7 +18,11 @@ public class menucontroller : MonoBehaviour
         Application.Quit();
         Debug.Log("quit");
     }
-
+    public void playmapselect()
+    {
+        SceneManager.LoadScene(mapselect);
+        Debug.Log("loading scene mapselect");
+    }
     public void playmenu()
     {
         SceneManager.LoadScene(mainmenu);
