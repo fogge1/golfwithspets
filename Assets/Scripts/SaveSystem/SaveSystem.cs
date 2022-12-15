@@ -4,8 +4,6 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.SceneManagement;
 
-// 7:00
-
 public class SaveSystem : MonoBehaviour
 {
     [SerializeField] Tile straightPrefab;
