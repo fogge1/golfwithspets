@@ -68,6 +68,10 @@ public class Placer : MonoBehaviour
                 addedAllowed.transform.rotation *= Quaternion.Euler(0, -90, 0);
                 changeMat(addedAllowed, _matT);          
             break;
+            case "end":
+                addedAllowed.transform.rotation *= Quaternion.Euler(0, 180, 0);
+                changeMat(addedAllowed, _matT);          
+            break;
             
         }
         
@@ -108,6 +112,11 @@ public class Placer : MonoBehaviour
             break;
             case "curveLeft":
                 changeMat(addedTile, _mat);
+            break;
+            case "end":
+                addedAllowed.transform.rotation *= Quaternion.Euler(0, 180, 0);
+                changeMat(addedTile, _mat);
+                Destroy(addedAllowed);       
             break;
             
         }

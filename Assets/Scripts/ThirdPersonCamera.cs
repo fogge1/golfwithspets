@@ -24,7 +24,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void Start ()
     {
-        targetDistance = Vector3.Distance(transform.position, target.transform.position);
+        targetDistance = 2f; //Vector3.Distance(transform.position, target.transform.position);
     }
 
     void Update ()
@@ -41,7 +41,7 @@ public class ThirdPersonCamera : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && velocity == 0) // only run once, save camera position after hit
         {
             oldRotX = rotX;
-            Debug.Log("Pressed left click.");
+            //Debug.Log("Pressed left click.");
         }
         if (Input.GetMouseButtonUp(0) && velocity == 0) // only run once, GetMouseButtonUp / GetMouseButton
         {
@@ -52,7 +52,7 @@ public class ThirdPersonCamera : MonoBehaviour
             m_Rigidbody.AddForce(vector);
 
             rotX = oldRotX; // return mouse to previous position
-            Debug.Log("Released left click.");
+            //Debug.Log("Released left click.");
 
             hits += 1; // add one hit to counter 
             clockText.text = "hits: " + hits.ToString();  // show hits on screen
@@ -73,7 +73,7 @@ public class ThirdPersonCamera : MonoBehaviour
             // move the camera position
             transform.position = target.transform.position - (transform.forward * targetDistance);
         }
-        fpsText.text = (1/Time.deltaTime).ToString();
+        //fpsText.text = (1/Time.deltaTime).ToString();
 
         if (Input.GetKeyDown("r"))
         {

@@ -42,4 +42,10 @@ public class Movement : MonoBehaviour
             oldVelocityY = m_Rigidbody.velocity.y;
         }
     }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "hole") {
+            Debug.Log("test");
+        } 
+    }
 }
