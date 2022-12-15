@@ -25,19 +25,23 @@ public class menucontroller : MonoBehaviour
         Debug.Log("loading scene mapselect");
     }
     public void playmenu()
-    {
+    {   
+        paused = false;
         SceneManager.LoadScene(mainmenu);
         Debug.Log("loading scene singleplayer");
+        
     }
 
     public void playsingleplayer()
     {
+        paused = false;
         SceneManager.LoadScene(singleplayer);
         Debug.Log("loading scene singleplayer");
     }
 
     public void playmapbuilder()
     {
+        paused = false;
         SceneManager.LoadScene(mapbuilder);
         Debug.Log("loading scene mapbuilder");
     }
@@ -59,6 +63,7 @@ public class menucontroller : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (paused)
@@ -68,6 +73,7 @@ public class menucontroller : MonoBehaviour
             }
             else
             {
+                Cursor.lockState = CursorLockMode.None;
                 pause();
             }
         }

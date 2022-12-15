@@ -20,17 +20,18 @@ public class CameraController : MonoBehaviour
     void Update ()
     {
         // get the mouse inputs 
-        float y = Input.GetAxis("Mouse X") * turnSpeed;
-        rotX += Input.GetAxis("Mouse Y") * turnSpeed;
+        if (!menucontroller.paused) {
+            float y = Input.GetAxis("Mouse X") * turnSpeed;
+            rotX += Input.GetAxis("Mouse Y") * turnSpeed;
 
-        // clamp the vertical rotation 
-        rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
+            // clamp the vertical rotation 
+            rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
 
-        // rotate the camera
-        transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
+            // rotate the camera
+            transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
-        // move the camera position
-        transform.position = target.transform.position - (transform.forward * targetDistance);
-
+            // move the camera position
+            transform.position = target.transform.position - (transform.forward * targetDistance);
+        }
     }
 }

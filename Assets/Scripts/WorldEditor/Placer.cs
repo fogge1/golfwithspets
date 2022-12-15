@@ -17,10 +17,13 @@ public class Placer : MonoBehaviour
     public GameObject addedTile;
     int allowedTileOffset = -2;
 
+    [SerializeField] private CameraController _cameraScript;
+    [SerializeField] private GameObject _saveBtn;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _saveBtn.SetActive(false);
     }
 
     // Update is called once per frame
@@ -116,7 +119,9 @@ public class Placer : MonoBehaviour
             case "end":
                 addedAllowed.transform.rotation *= Quaternion.Euler(0, 180, 0);
                 changeMat(addedTile, _mat);
-                Destroy(addedAllowed);       
+                _saveBtn.SetActive(true);
+                _cameraScript.enabled = false;
+                Destroy(addedAllowed);
             break;
             
         }
