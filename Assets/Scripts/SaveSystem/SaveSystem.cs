@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
 // 7:00
 
@@ -11,17 +12,20 @@ public class SaveSystem : MonoBehaviour
     [SerializeField] Tile turnLeftPrefab;
     [SerializeField] Tile turnRightPrefab;
     [SerializeField] Tile rampPrefab;
+    [SerializeField] Tile endPrefab;
+    [SerializeField] Material greenMat;
 
     public static List<Tile> tiles = new List<Tile>();
     const string MAP_INDEX_PATH = "/map.count";
     string SUB_PATH = "/tiles";
 
     public void SaveTile() {
-
+        //SeriouslyDeleteAllSaveFiles();
+        int mapIndex = 0;
 
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + SUB_PATH;
-        string countPath = Application.persistentDataPath + SUB_PATH + ".count";
+        string path = Application.persistentDataPath + SUB_PATH + mapIndex;
+        string countPath = Application.persistentDataPath + SUB_PATH + mapIndex +".count";
 
 
         FileStream countStream = new FileStream(countPath, FileMode.Create);
@@ -37,6 +41,8 @@ public class SaveSystem : MonoBehaviour
 
             stream.Close();
         }
+
+        SceneManager.LoadScene(1);
     }
 
     public void LoadTile() {
@@ -80,6 +86,9 @@ public class SaveSystem : MonoBehaviour
                     case "ramp":
                         SpawnTile(rampPrefab, position, rotation);
                     break;
+                    case "end":
+                        SpawnTile(endPrefab, position, rotation);
+                    break;
                 }
             }
             else {
@@ -88,6 +97,18 @@ public class SaveSystem : MonoBehaviour
             
         }
     }
+
+    // public void SeriouslyDeleteAllSaveFiles()
+    // {
+    //     string path = Application.persistentDataPath + SUB_PATH;
+    //     string countPath = Application.persistentDataPath + SUB_PATH + ".count";
+    //     DirectoryInfo directory = new DirectoryInfo(path);
+    //     directory.Delete(true);
+    //     DirectoryInfo directoryCount = new DirectoryInfo(countPath);
+    //     directoryCount.Delete(true);
+    //     Directory.CreateDirectory(path);
+    //     Directory.CreateDirectory(countPath);
+    // }
 
     public int GetMaps() {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -109,5 +130,15 @@ public class SaveSystem : MonoBehaviour
 
     void SpawnTile(Tile tilePrefab, Vector3 position, Quaternion rotation) {
         Tile tile = Instantiate(tilePrefab, position, rotation);
+        changeMat(tile, greenMat);
     }
+
+    void changeMat(Tile go, Material mat) {
+        for (int i = 0; i < go.transform.childCount; i++) {
+            GameObject part = go.transform.GetChild(i).gameObject;
+            if (part.tag == "part") {
+                part.GetComponent<MeshRenderer>().material = mat;
+            }
+        }
+    }    
 }
