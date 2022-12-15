@@ -7,10 +7,10 @@ public class menucontroller : MonoBehaviour
 {
     public static bool paused = false;
     public GameObject PauseMenuUI;
-    public int mainmenu;
-    public int mapselect;
-    public int singleplayer = 3;
-    public int mapbuilder;
+    private int mainmenu = 0;
+    private int mapselect = 2;
+    private int singleplayer = 3;
+    private int mapbuilder = 1;
 
 
     public void quit()

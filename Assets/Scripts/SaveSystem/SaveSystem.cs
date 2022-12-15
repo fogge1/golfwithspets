@@ -42,7 +42,7 @@ public class SaveSystem : MonoBehaviour
             stream.Close();
         }
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void LoadTile() {

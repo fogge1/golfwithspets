@@ -18,6 +18,6 @@ public class Buttons : MonoBehaviour
     }
 
     public void loadMainMenu() {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
