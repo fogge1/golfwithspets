@@ -20,7 +20,8 @@ public class menucontroller : MonoBehaviour
     }
     public void playmapselect()
     {
-        SceneManager.LoadScene(mapselect);
+        playsingleplayer();
+        //SceneManager.LoadScene(mapselect);
         Debug.Log("loading scene mapselect");
     }
     public void playmenu()

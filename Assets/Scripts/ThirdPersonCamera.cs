@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
@@ -21,15 +22,38 @@ public class ThirdPersonCamera : MonoBehaviour
     public TMP_Text clockText;
     public int hits = 0;
     public TMP_Text fpsText;
+    [SerializeField] GameObject mouseImg;
+    int timeToShowImg = 3000;
+    RectTransform mousePos;
+    RectTransform startPos;
+    int shownTime = 200;
+    
 
     void Start ()
     {
         targetDistance = 2f; //Vector3.Distance(transform.position, target.transform.position);
+        mouseImg.SetActive(false);
+        
+        
+        mousePos = mouseImg.GetComponent<RectTransform>();
+        startPos = mousePos;
     }
 
     void Update ()
     {
         Cursor.lockState = CursorLockMode.Locked; // lock mouse in center of screen
+
+        timeToShowImg--;
+        if (timeToShowImg < 0) {
+            mouseImg.SetActive(true);
+            Debug.Log("test");
+            shownTime--;
+            mousePos.anchoredPosition -= new Vector2(0, 1f);
+            if (shownTime < 0) {
+                shownTime = 200;
+                mousePos.anchoredPosition = new Vector2(0f, 0f);
+            }
+        }
 
         // get the mouse inputs 
         float y = Input.GetAxis("Mouse X") * turnSpeed;
@@ -40,6 +64,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && velocity == 0) // only run once, save camera position after hit
         {
+            timeToShowImg = 3000;
+            mouseImg.SetActive(false);
             oldRotX = rotX;
             //Debug.Log("Pressed left click.");
         }
