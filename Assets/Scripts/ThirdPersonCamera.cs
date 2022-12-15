@@ -19,7 +19,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public float force;
     private Vector3 vector;
     public TMP_Text clockText;
-    private int hits = 0;
+    public int hits = 0;
     public TMP_Text fpsText;
 
     void Start ()

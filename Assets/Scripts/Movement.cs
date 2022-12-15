@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Movement : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class Movement : MonoBehaviour
     private float fastBrakeForce = -24;
     private float oldVelocity;
     private float oldVelocityY;
+    [SerializeField] private ThirdPersonCamera _cameraScript;
+    [SerializeField] private GameObject scoreBoard;
+    [SerializeField] private TMP_Text hitsText;
 
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        scoreBoard.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -46,6 +52,12 @@ public class Movement : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "hole") {
             Debug.Log("test");
+            string hits = _cameraScript.hits.ToString();
+            hitsText.text = hits;
+            scoreBoard.SetActive(true);
+            _cameraScript.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+
         } 
     }
 }
